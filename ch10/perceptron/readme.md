@@ -77,4 +77,11 @@ def NAND_gate(x1, x2):
     else:
         return 1
 ```
+``` python
+NAND_gate(0, 0), NAND_gate(0, 1), NAND_gate(1, 0), NAND_gate(1, 1)
+```
+
+``` python
+(1, 1, 1, 0)
+```
 
