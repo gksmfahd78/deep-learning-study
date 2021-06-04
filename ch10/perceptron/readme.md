@@ -23,6 +23,7 @@ x는 입력값을 의미하며, W는 가중치(Weight), y는 출력값입니다.
 ![임계치값](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/%EC%9E%84%EA%B3%84%EC%B9%98%EA%B0%92.JPG)<br><br>
 
 단 위의 식에서 임계치를 좌변으로 넘기고 편향 b(bias)로 표현할 수도 있습니다. 편향 b 또한 퍼셉트론의 입력으로 사용됩니다. 보통 그림으로 표현할 때는 입력값이 1로 고정되고 편향b가 곱해지는 변수로 표현합니다.<br><br>
+
 ![perceoptron2_final](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/perceptron2_final.png)<br><br>
 
 ![임계치값2](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/%EC%9E%84%EA%B3%84%EC%B9%98%EA%B0%922.JPG)<br><br>
@@ -36,7 +37,7 @@ x는 입력값을 의미하며, W는 가중치(Weight), y는 출력값입니다.
 
 단일 퍼셉트론을 이용하면 AND, NAND, OR 게이트를 쉽게 구현 할 수 있습니다. 게이트 연산에 쓰이는 것은 두 개의 입력값과 하나의 출력값입니다. 예를 들어 AND 게이트의 경우에는 두 개의 입력 값이 모두 1인 경우에만 출력값이 1이 나오는 구조를 갖고 있습니다.<br><br>
 
-![and_gate](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/andgate.png)
+![and_gate](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/andgate.png)<br><br>
 단일 퍼셉트론의 식을 통해 AND 게이트를 만족하는 두개의 가중치와 편향 값에는 가각 w1, w2, b라고 한다면 [0.5, 0.5, -0.7], [0.5, 0.5, -0.8] 또는 [1.0, 1.0, -1.0]등 외에도 다양한 가중치와 편향의 조합이 나올 수 있습니다.<br><br>
 
 ``` python
