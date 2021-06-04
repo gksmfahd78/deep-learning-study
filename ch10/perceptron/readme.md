@@ -84,4 +84,57 @@ NAND_gate(0, 0), NAND_gate(0, 1), NAND_gate(1, 0), NAND_gate(1, 1)
 ``` python
 (1, 1, 1, 0)
 ```
+<br><br>
+
+NAND 게이트를 구현한 파이썬 코드에 입력값을 넣자, 두 개의 입력값이 1인 경우에만 0이 나오는 것을 확인할 수 있습니다. 퍼셉트론으로 NAND 게이트를 구현한 것입니다. [-0.5, -0.5, -0.7] 외에도 퍼셉트론이 NAND 게이트의 동작을 하도록 하는 다양한 가중치와 편향의 값들이 있을 것 입니다.<br><br>
+
+두 개의 입력이 모두 0인 경우에 출력값이 0이고 나머지 경우에는 모두 출력값이 1인 OR 게이트 또한 적절한 가중치 값과 편향 값만 찾으면 단일 퍼셉트론의 식으로 구현할 수 있습니다.<br><br>
+
+![orgate](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/orgate.png) <br><br>
+
+각각 가중치와 편향에 대해서 [0.6, 0.6, -0.5]를 선택하면 OR 게이트를 충족합니다. <br><br>
+
+``` python
+def OR_gate(x1, x2):
+    w1=0.6
+    w2=0.6
+    b=-0.5
+    result = x1*w1 + x2*w2 + b
+    if result <= 0:
+        return 0
+    else:
+        return 1
+```
+``` python
+OR_gate(0, 0), OR_gate(0, 1), OR_gate(1, 0), OR_gate(1, 1)
+```
+
+``` python
+(0, 1, 1, 1)
+```
+<br><br>
+
+이 외에도 이를 충족하는 다양한 가중치와 편향의 값이 있습니다.<br><br>
+
+이처럼 단일 퍼셉트론은 AND 게이트, NAND 게이트, OR 게이트 또한 구현할 수 있습니다. 하지만 단일 퍼셉트론으로 구현이 불가능한 게이트가 있는데 바로 XOR 게이트입니다. XOR 게이트는 입력값 두 개가 서로 다른 값을 갖고 있을때에만 출력값이 1이 되고, 입력값 두 개가 서로 같은 값을 가지면 출력값이 0이 되는 게이트입니다. 위의 파이썬 코드에 아무리 수많은 가중치와 편향을 넣어봐도 XOR 게이트를 구현하는 것은 불가능합니다. 그 이유는 단일 퍼셉트론은 직선 하나로 두 영역을 나눌 수 있는 문제에 대해서만 구현이 가능하기 때문입니다.<br><br>
+
+AND 게이트에 대한 단일 퍼셉트론을 시각화 한다면 <br><br>
+![andgrapgate](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/andgraphgate.png)<br><br>
+출력값 0을 하얀색 원, 1을 검은색 원으로 표현했습니다. AND 게이트를 충족하려면 하얀색 원과 검은색 원을 직선으로 나누게 됩니다. 마찬가지로 NAND 게이트나 OR 게이트에 대해서도 시각화를 했을 때 직선으로 나누는 것이 가능합니다.<br><br>
+
+![orgateandnandgate](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/oragateandnandgate.png)<br><br>
+
+XOR 게이트는 입력값 두 개가 서로 다른 값을 갖고 있을때에만 출력값이 1이 되고, 입력값 두 개가 서로 같은 값을 가지면 출력값이 0이 되는 게이트입니다. <br><br>
+
+![xorgraphandxorgate](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/xorgraphandxorgate.png)<br><br>
+
+하얀색 원과 검은색 원을 직선 하나로 나누는 것은 불가능합니다. 즉, eksdlf 퍼셉트론으로는 XOR 게이트를 구현하는 것이 불가능합니다. 이를 eksdlf 퍼셉트론은 선형 영역에 대해서만 분리가 가능하다고 말합니다. 다시 말하면 XOR 게이트는 직선이 아닌 곡선. 비선형 영역으로 분리하면 구현이 가능합니다.<br><br>
+
+![xorgate_nonlinearity](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/xorgate_nonlinearity.png)<br><br>
+
+위의 그림은 곡선을 사용한다면 하얀색 원과 검은색 원을 나눌 수 있음을 보여줍니다. 이제 XOR 게이트를 만들 수 있는 다층 퍼셉트론에 대해서 알아보도록 하겠습니다.
+
+# 3. 멀티 퍼셉트론
+
+XOR 게이트는 기존의 AND, NAND, OR 게이트를 조합하면 만들 수 있습니다. 퍼셉트론 관점에서 말하면, 층을 더 쌓으면 만들 수 있습니다. 멀티 퍼셉트론과 단일 퍼셉트론의 차이는 단일 퍼셉트론은 입력층과 출력층만 존재하지만, 멀티 퍼셉트론은 중간에 층을 더 추가하였다는 점입니다. 이렇게 입력층과 출력층 사이에 존재하는 층을 은닉층(hidden layer)이라고 합니다. 즉, 다층 퍼셉트론은 중간에 은닉층이 존재한다는 점이 단일 퍼셉트론과 다릅니다. 다층 퍼셉트론은 줄여서 MLP라고도 부릅니다.<br><br>
 
