@@ -14,5 +14,8 @@ x는 입력값을 의미하며, W는 가중치(Weight), y는 출력값입니다.
 ![perceoptron2_final](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/perceptron/img/perceptron2_final.png)<br>
 ![임계치값2](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/perceptron/img/%EC%9E%84%EA%B3%84%EC%B9%98%EA%B0%922.JPG)<br>
 뉴런에서 출력값을 변경시키는 함수를 활성화 함수(Activation Function)라고 합니다. 초기 인공 신경망 모델인 퍼셉트론은 활성화 함수로 계산 함수를 사용하였지만, 그 뒤에 등장한 여러가지 발전된 신경망들은 계단 함수 외에도 여러 다양한 활성화 함수를 사용하기 시작했습니다. 시그모이드 함수, 소프트맥수 함수 또한 활성화 함수 중 하나입니다. 
+## 2. 단일 퍼셉트론
+위 같은 퍼셉트론을 단층 퍼셉트론이라고 합니다. 퍼셉트론은 단층 퍼셉트론과 다층 퍼셉트론으로 나누어지는데, 단층 퍼셉트론은 값을 보내는 단계과 보내는 단계과 값을 받아서 추력하는 두 단계로만 이루어집니다. 이때 각 단계를 보통 층ㅇ이라고 부르며, 이 두 개의 층을 입력층(input layer)과 출력층(output layer)이라고 합니다.
+
 
 
