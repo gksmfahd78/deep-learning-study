@@ -9,7 +9,7 @@ class Perceptron:
         return 1 if x > 0 else 0
 
     def fit(self, X, y, epochs=10):
-        slef.history = {}
+        self.history = {}
         self.history["loss"] = []
         X = np.c_[X, np.ones((X.shape[0]))]
  
@@ -26,7 +26,7 @@ class Perceptron:
                     trials += abs(error[0])
                     self.W += -self.alpha * error * x
             self.history["loss"].append(errors/trials)
-            print("Epoch {}/{} - loss: {}, W: {}".format(epoch, epochs, erros/trials, self.W))
+            print("Epoch {}/{} - loss: {}, W: {}".format(epoch, epochs, errors/trials, self.W))
                     
 
     def predict(self, X, addBias=True):
