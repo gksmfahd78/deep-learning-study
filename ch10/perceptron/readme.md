@@ -23,6 +23,7 @@ x는 입력값을 의미하며, W는 가중치(Weight), y는 출력값입니다.
 ![임계치값](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/%EC%9E%84%EA%B3%84%EC%B9%98%EA%B0%92.JPG)<br><br>
 
 단 위의 식에서 임계치를 좌변으로 넘기고 편향 b(bias)로 표현할 수도 있습니다. 편향 b 또한 퍼셉트론의 입력으로 사용됩니다. 보통 그림으로 표현할 때는 입력값이 1로 고정되고 편향b가 곱해지는 변수로 표현합니다.<br><br>
+
 ![perceoptron2_final](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/perceptron2_final.png)<br><br>
 
 ![임계치값2](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/%EC%9E%84%EA%B3%84%EC%B9%98%EA%B0%922.JPG)<br><br>
@@ -36,7 +37,7 @@ x는 입력값을 의미하며, W는 가중치(Weight), y는 출력값입니다.
 
 단일 퍼셉트론을 이용하면 AND, NAND, OR 게이트를 쉽게 구현 할 수 있습니다. 게이트 연산에 쓰이는 것은 두 개의 입력값과 하나의 출력값입니다. 예를 들어 AND 게이트의 경우에는 두 개의 입력 값이 모두 1인 경우에만 출력값이 1이 나오는 구조를 갖고 있습니다.<br><br>
 
-![and_gate](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/andgate.png)
+![and_gate](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/andgate.png)<br><br>
 단일 퍼셉트론의 식을 통해 AND 게이트를 만족하는 두개의 가중치와 편향 값에는 가각 w1, w2, b라고 한다면 [0.5, 0.5, -0.7], [0.5, 0.5, -0.8] 또는 [1.0, 1.0, -1.0]등 외에도 다양한 가중치와 편향의 조합이 나올 수 있습니다.<br><br>
 
 ``` python
@@ -132,10 +133,14 @@ XOR 게이트는 입력값 두 개가 서로 다른 값을 갖고 있을때에�
 
 ![xorgate_nonlinearity](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/xorgate_nonlinearity.png)<br><br>
 
-위의 그림은 곡선을 사용한다면 하얀색 원과 검은색 원을 나눌 수 있음을 보여줍니다. 이제 XOR 게이트를 만들 수 있는 다층 퍼셉트론에 대해서 알아보도록 하겠습니다.
+위의 그림은 곡선을 사용한다면 하얀색 원과 검은색 원을 나눌 수 있음을 보여줍니다. 이제 XOR 게이트를 만들 수 있는 멀티 퍼셉트론에 대해서 알아보도록 하겠습니다.
 
 # 3. 멀티 퍼셉트론
 
-XOR 게이트는 기존의 AND, NAND, OR 게이트를 조합하면 만들 수 있습니다. 퍼셉트론 관점에서 말하면, 층을 더 쌓으면 만들 수 있습니다. 멀티 퍼셉트론과 단일 퍼셉트론의 차이는 단일 퍼셉트론은 입력층과 출력층만 존재하지만, 멀티 퍼셉트론은 중간에 층을 더 추가하였다는 점입니다. 이렇게 입력층과 출력층 사이에 존재하는 층을 은닉층(hidden layer)이라고 합니다. 즉, 다층 퍼셉트론은 중간에 은닉층이 존재한다는 점이 단일 퍼셉트론과 다릅니다. 다층 퍼셉트론은 줄여서 MLP라고도 부릅니다.<br><br>
+XOR 게이트는 기존의 AND, NAND, OR 게이트를 조합하면 만들 수 있습니다. 퍼셉트론 관점에서 말하면, 층을 더 쌓으면 만들 수 있습니다. 멀티 퍼셉트론과 단일 퍼셉트론의 차이는 단일 퍼셉트론은 입력층과 출력층만 존재하지만, 멀티 퍼셉트론은 중간에 층을 더 추가하였다는 점입니다. 이렇게 입력층과 출력층 사이에 존재하는 층을 은닉층(hidden layer)이라고 합니다. 즉, 멀티 퍼셉트론은 중간에 은닉층이 존재한다는 점이 단일 퍼셉트론과 다릅니다. 멀티 퍼셉트론은 줄여서 MLP라고도 부릅니다.<br><br>
 
+![percoptron_4image](https://github.com/gksmfahd78/deep-learning-study/blob/master/ch10/img/perceptron_4image.jpg)<br><br>
 
+위와 같이 은닉층이 2개 이상인 신경망을 심층 신경망(Deep Neural Network, DNN)이라고 합니다. 심층 신경망은 멀티 퍼셉트론만 이야기 하는 것이 아니라, 여러 변형된 다양한 신경망들도 은닉층이 2개 이상이 되면 심층 신경망이라고 합니다.<br><br>
+
+지금까지는 OR, AND, XOR 게이트 등. 퍼셉트론이 가야할 정답을 참고로 퍼셉트론이 정답을 출력할 때까지 가중치를 바꿔보면서 맞는 가중치를 찾았습니다. 즉, 가중치를 수동으로 찾았습니다. 하지만 이제는 기계가 가중치를 스스로 찾아내도록 자동화시켜야하는데, 이것이 머신 러닝에서 말하는 학습(training) 단계에 해당됩니다. 앞서 선형 회귀와 로지스틱 회귀에서 보았듯이 손실 함수(Loss function)와 옵티마이저(Optimizer)를 사용합니다. 그리고 만약 학습을 시키는 인공 신경망이 심층 신경망일 경우에는 이를 심층 신경망을 학습시킨다고 하여, 딥 러닝(Deep Learning)이라고 합니다.
