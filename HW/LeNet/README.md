@@ -1,0 +1,1 @@
+python lenet_mnist.py --save-model 1 --weights output/lenet_weights.hdf5
